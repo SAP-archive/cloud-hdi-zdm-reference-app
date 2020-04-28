@@ -140,7 +140,8 @@ $ # The response should be `HTTP: 404`
 If you need any support, have any question or have found a bug, please report it in the [GitHub bug tracking system](https://github.com/SAP/cloud-hdi-zdm-reference-app/issues).
 
 # License
-This project is licensed under SAP SAMPLE CODE LICENSE AGREEMENT except as noted otherwise in the [LICENSE](./LICENSE) file.
+Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved. 
+This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
 
 # Further reading
 * [ZDM for Multi-Target Applications (MTA) with Database Changes on SAP CP CF](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/e62731aa735340bfb0c4b7c71b4bf5e7.html)
