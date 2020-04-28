@@ -22,14 +22,14 @@ wget -nv --output-document=$ROOT_DIR/tmp/mta_archive_builder/mta_archive_builder
 
 echo "Building blue .mtar file ..."
 cd $ROOT_DIR/cloud-hdi-zdm-ref-app.blue/mta-jee/
-java -jar $ROOT_DIR/tmp/mta_archive_builder/mta_archive_builder.jar --build-target=CF --mtar=$BLUE_MTAR build
+java -jar $ROOT_DIR/tmp/mta_archive_builder/mta_archive_builder.jar --build-target=XSA --mtar=$BLUE_MTAR build
 mkdir $ROOT_DIR/out/
 cp $BLUE_MTAR $ROOT_DIR/out/
 cd $ROOT_DIR
 
 echo "Building green .mtar file ..."
 cd $ROOT_DIR/cloud-hdi-zdm-ref-app.green/mta-jee/
-java -jar $ROOT_DIR/tmp/mta_archive_builder/mta_archive_builder.jar --build-target=CF --mtar=$GREEN_MTAR build
+java -jar $ROOT_DIR/tmp/mta_archive_builder/mta_archive_builder.jar --build-target=XSA --mtar=$GREEN_MTAR build
 cp $GREEN_MTAR $ROOT_DIR/out/
 cd $ROOT_DIR
 
