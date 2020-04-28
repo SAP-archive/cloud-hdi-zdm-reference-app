@@ -1,10 +1,10 @@
 # Cloud HDI ZDM Reference Application [![Build Status](https://travis-ci.org/SAP/cloud-hdi-zdm-reference-app.svg?branch=master)](https://travis-ci.org/SAP/cloud-hdi-zdm-reference-app)
 
 # Description
-Cloud HDI (HANA Deployment Infrastructure) ZDM (Zero-Downtime Maintenance) Reference Application, or `cloud-hdi-zdm-ref-app`, demonstrates how to develop Multi-Target Applications with HDI content, which support zero-downtime updates. It is based on the [Muti-Target Application (MTA)](https://www.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html) model and follows the [Zero-Downtime Maintenance (ZDM) Adoption Guideline](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/e62731aa735340bfb0c4b7c71b4bf5e7.html) in order to support zero-downtime updates. The update is done by following [Blue-Green Deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html) process. 
+Cloud HDI (HANA Deployment Infrastructure) ZDM (Zero-Downtime Maintenance) Reference Application, or `cloud-hdi-zdm-ref-app`, demonstrates how to develop Multi-Target Applications with HDI content, which support zero-downtime updates. It is based on the [Muti-Target Application (MTA)](https://www.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html) model and follows the [Zero-Downtime Maintenance (ZDM) Adoption Guideline](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/e62731aa735340bfb0c4b7c71b4bf5e7.html) in order to support zero-downtime updates. The update is done by following the [Blue-Green Deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html) process. 
 
 ## Blue-green deployment
-This repository contains two versions of the reference application: [blue](./cloud-hdi-zdm-ref-app.blue) and [green](./cloud-hdi-zdm-ref-app.green). The green version contains changes on top of the blue version. The blue and green versions of the reference application are [Muti-Target Applications (MTAs)](https://www.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html). Zero-downtime update is demonstrated by updating the blue version of the application to the green version, following the [blue-green deployment process of MTAs](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/764308c52e68488dac848bae93e9137b.html). The blue-green deployment of MTAs is supported on [SAP Cloud Platform Cloud Foundry (SAP CP CF)](https://cloudplatform.sap.com/enterprise-paas/cloudfoundry.html) and [SAP XS Advanced (XSA)](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.00/en-US/df19a03dc07e4ba19db4e0006c1da429.html) environments. Both environments are following the [Cloud Foundry concepts](https://docs.cloudfoundry.org/concepts/overview.html), so the user and development experience is identical.
+This repository contains two versions of the reference application: [blue](./cloud-hdi-zdm-ref-app.blue) and [green](./cloud-hdi-zdm-ref-app.green). The green version contains changes on top of the blue version. The blue and green versions of the reference application are [Muti-Target Applications (MTAs)](https://www.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html). Zero-downtime update is demonstrated by updating the blue version of the application to the green version, following the [blue-green deployment process of MTAs](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/764308c52e68488dac848bae93e9137b.html). The blue-green deployment of MTAs is supported on [SAP Cloud Platform Cloud Foundry (SAP CP CF)](https://cloudplatform.sap.com/enterprise-paas/cloudfoundry.html) and [SAP XS Advanced (XSA)](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.00/en-US/df19a03dc07e4ba19db4e0006c1da429.html) environments. Both environments are following the [Cloud Foundry concepts](https://docs.cloudfoundry.org/concepts/overview.html), so the user and development experience is identical. **Note, however, that zero-downtime maintanance of HDI content is only supported on XSA.**
 
 The blue and green versions of the reference application are build independently by the [MTA Archive Builder](https://help.sap.com/viewer/58746c584026430a890170ac4d87d03b/Cloud/en-US/ba7dd5a47b7a4858a652d15f9673c28d.html). The result from the build of each version of the application is MTA archive (.mtar) file. The build results are located at:
 1. [cloud-hdi-zdm-ref-app.blue/mta-jee](./cloud-hdi-zdm-ref-app.blue/mta-jee). Blue version of MTA archive (.mtar) file.
@@ -28,14 +28,10 @@ The backend module is a Java web application, which consumes the database object
 1. [Git version 2.19.1](https://git-scm.com/downloads) or newer version.
 2. [Apache Maven version 3.3.9](https://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/) or newer version.
 3. [MTA Archive Builder version 1.1.7](https://tools.hana.ondemand.com/#cloud) or newer version. You can find more information for the MTA Archive Builder [here](https://help.sap.com/viewer/58746c584026430a890170ac4d87d03b/Cloud/en-US/ba7dd5a47b7a4858a652d15f9673c28d.html). Currently it is a java archive (.jar) file. Place it in your home folder (`~/mta-archive-builder.jar`).
-4. [Cloud Foundry Command Line Interface (cf CLI) version 6.34.1](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html) or newer version.
-5. [CF MTA CLI Plugin version 2.0.7](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin) or newer version.
-6. Get access to [SAP Cloud Platform Cloud Foundry (SAP CP CF)](https://cloudplatform.sap.com/enterprise-paas/cloudfoundry.html) or [SAP XS Advanced (XSA) on-premise](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.00/en-US/f472017c780e4db4adcbccc8ba04de05.html) environment, by following the linked guides.
-7. Login to the [SAP CP CF environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/75125ef1e60e490e91eb58fe48c0f9e7.html#loio7a37d66c2e7d401db4980db0cd74aa6b) or [SAP XSA environment](https://help.sap.com/viewer/400066065a1b46cf91df0ab436404ddc/2.0.02/en-US/c00ed3f74c12479e9f3a8cdeb6e1519a.html). You can find more information for the login command [here](https://docs.cloudfoundry.org/cf-cli/getting-started.html). After login an [organization and space](https://docs.cloudfoundry.org/concepts/roles.html) are targeted. The reference application will be deployed in this organization and space.
-8. The reference application requires a HANA service instances for persistence. 
-	* For SAP CP CF Enterprise account you should [create SAP HANA Tenant Database in your organization and space](https://help.sap.com/viewer/d4790b2de2f4429db6f3dff54e4d7b3a/Cloud/en-US/a5ca88752703418fbad79a0f541246ab.html) or [share SAP HANA Tenant Database in your organization and space](https://help.sap.com/viewer/d4790b2de2f4429db6f3dff54e4d7b3a/Cloud/en-US/f63a19669a974aba92baf198adae3a83.html).
-	* For SAP CP CF Trial account you need to [bind a shared SAP HANA tenant database service](https://help.sap.com/viewer/d4790b2de2f4429db6f3dff54e4d7b3a/Cloud/en-US/5a3e2f0f4645407aaf1278252088484a.html).
-	* For SAP XSA the SAP HANA database instance is provided out of the box.
+4. [XSA Command Line Interface (xs CLI) version 1.0.99](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/addd59069e6f444ca6ccc064d131feec.html) or newer version.
+5. Get access to [SAP XS Advanced (XSA) on-premise](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.00/en-US/f472017c780e4db4adcbccc8ba04de05.html) environment, by following the linked guides.
+6. Login to the [SAP XSA environment](https://help.sap.com/viewer/400066065a1b46cf91df0ab436404ddc/2.0.02/en-US/c00ed3f74c12479e9f3a8cdeb6e1519a.html). You can find more information for the login command [here](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/c175b5436b7e41d187e9a67d2e30f40b.html). After login an [organization and space](https://docs.cloudfoundry.org/concepts/roles.html) are targeted. The reference application will be deployed in this organization and space.
+7. The reference application requires HANA service instances for persistence. For SAP XSA, the SAP HANA database instance is provided out of the box.
 
 # Download and Installation
 
@@ -49,7 +45,7 @@ $ git clone https://github.com/SAP/cloud-hdi-zdm-reference-app.git && cd ./cloud
 
 ```
 $ cd ./cloud-hdi-zdm-ref-app.blue/mta-jee/
-$ java -jar ~/mta-archive-builder.jar --build-target=CF --mtar=cloud-hdi-zdm-ref-app-blue-<version>.mtar build
+$ java -jar ~/mta-archive-builder.jar --build-target=XSA --mtar=cloud-hdi-zdm-ref-app-blue-<version>.mtar build
 $ cd ../../
 $ # The result from the build is located at ./cloud-hdi-zdm-ref-app.blue/mta-jee/cloud-hdi-zdm-ref-app-blue-<version>.mtar
 ```
@@ -58,7 +54,7 @@ $ # The result from the build is located at ./cloud-hdi-zdm-ref-app.blue/mta-jee
 
 ```
 $ cd ./cloud-hdi-zdm-ref-app.green/mta-jee/
-$ java -jar ~/mta-archive-builder.jar --build-target=CF --mtar=cloud-hdi-zdm-ref-app-green-<version>.mtar build
+$ java -jar ~/mta-archive-builder.jar --build-target=XSA --mtar=cloud-hdi-zdm-ref-app-green-<version>.mtar build
 $ cd ../../
 $ # The result from the build is located at ./cloud-hdi-zdm-ref-app.green/mta-jee/cloud-hdi-zdm-ref-app-green-<version>.mtar
 ```
@@ -70,7 +66,7 @@ This section applies the blue-green deployment process step by step and demonstr
 1. Deploy blue version 
 
 ```
-$ cf bg-deploy ./cloud-hdi-zdm-ref-app.blue/mta-jee/cloud-hdi-zdm-ref-app-blue-<version>.mtar -e config.mtaext
+$ xs bg-deploy ./cloud-hdi-zdm-ref-app.blue/mta-jee/cloud-hdi-zdm-ref-app-blue-<version>.mtar -e config.mtaext
 ```
 
 2. Test blue version on live URL
@@ -89,7 +85,7 @@ $ # The response should be `{"cdsPerson":{"id":<ID>,"firstName":"FirstName <ID>"
 3. Deploy green version
 
 ```
-$ cf bg-deploy ./cloud-hdi-zdm-ref-app.green/mta-jee/cloud-hdi-zdm-ref-app-green-<version>.mtar -e config.mtaext
+$ xs bg-deploy ./cloud-hdi-zdm-ref-app.green/mta-jee/cloud-hdi-zdm-ref-app-green-<version>.mtar -e config.mtaext
 ```
 
 4. Test green version on idle URL
@@ -108,10 +104,10 @@ $ # The response should be `{"cdsPerson":{"id":<ID>,"firstName":"FirstName <ID>"
 
 5. Resume the blue-green deployment process
 
-   After the `cloud-hdi-zdm-ref-app-backend-green` application is tested, the blue-green deployment process can be resumed. The exact command is printed as a progress message in the console. Search for `Use "cf bg-deploy -i <process id> -a resume" to resume the process.`. After you found it you should execute it:
+   After the `cloud-hdi-zdm-ref-app-backend-green` application is tested, the blue-green deployment process can be resumed. The exact command is printed as a progress message in the console. Search for `Use "xs bg-deploy -i <process id> -a resume" to resume the process.`. After you found it you should execute it:
 
 ```
-$ cf bg-deploy -a resume -i <process id>
+$ xs bg-deploy -a resume -i <process id>
 ```
 
 6. Test green version on live URL
@@ -144,8 +140,6 @@ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
 This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
 
 # Further reading
-* [ZDM for Multi-Target Applications (MTA) with Database Changes on SAP CP CF](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/e62731aa735340bfb0c4b7c71b4bf5e7.html)
 * [ZDM for Multi-Target Applications (MTA) with Database Changes on SAP XSA](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/a7afca80f35c444c8d2e4ab42f5ec06d.html)
 * [Muti-Target Application (MTA) model](https://www.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html)
-* [Developing SAP HANA in the Cloud Foundry Environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/14224d75f6c64b499d189e3ebd131ec2.html)
 * [Maintaining HDI Containers](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.01/en-US/23f1f40731504e7eb7e4ec4b65cbfa71.html)
