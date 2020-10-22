@@ -137,7 +137,7 @@ If you need any support, have any question or have found a bug, please report it
 
 # License
 Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved. 
-This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
+This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
 
 # Further reading
 * [ZDM for Multi-Target Applications (MTA) with Database Changes on SAP XSA](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/a7afca80f35c444c8d2e4ab42f5ec06d.html)
